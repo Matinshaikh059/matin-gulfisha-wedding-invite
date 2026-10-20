@@ -1,0 +1,12 @@
+# Local editor/system files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# Optional: ignore generated files if you add any later
+*.log
+
+# Ignore the assets folder until you are ready to publish it
+assets/
