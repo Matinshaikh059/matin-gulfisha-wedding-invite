@@ -26,55 +26,98 @@
 
 <body>
   <main class="page-shell">
+    <svg class="svg-library" aria-hidden="true">
+      <defs>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#8e5915" />
+          <stop offset=".22" stop-color="#f7df9a" />
+          <stop offset=".48" stop-color="#bd8425" />
+          <stop offset=".72" stop-color="#fff0b8" />
+          <stop offset="1" stop-color="#a76a17" />
+        </linearGradient>
+        <linearGradient id="goldFill" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#fff0bb" />
+          <stop offset=".45" stop-color="#d4a44b" />
+          <stop offset="1" stop-color="#a86b1a" />
+        </linearGradient>
+        <g id="leaf">
+          <path d="M0 0 C10 -15 26 -17 34 -14 C25 -2 13 4 0 0Z" fill="url(#goldFill)" stroke="#a66d1c" stroke-width="1" />
+          <path d="M2 -1 Q17 -8 31 -13" fill="none" stroke="#fff0b6" stroke-width="1" />
+        </g>
+        <g id="sprig">
+          <path d="M0 0 C18 -15 28 -33 39 -55 C48 -73 54 -83 65 -91" fill="none" stroke="url(#gold)" stroke-width="2" stroke-linecap="round" />
+          <use href="#leaf" transform="translate(12 -13) rotate(-22) scale(.7)" />
+          <use href="#leaf" transform="translate(25 -31) rotate(164) scale(.62)" />
+          <use href="#leaf" transform="translate(34 -48) rotate(-20) scale(.65)" />
+          <use href="#leaf" transform="translate(46 -67) rotate(160) scale(.56)" />
+          <path d="M39 -55 C20 -60 17 -76 23 -84 C35 -80 42 -68 39 -55Z" fill="url(#goldFill)" stroke="#a66d1c" stroke-width="1" />
+          <path d="M39 -55 Q31 -70 24 -82" fill="none" stroke="#fff0b6" stroke-width="1" />
+        </g>
+        <g id="curl">
+          <path d="M0 0 C18 -4 28 -18 24 -31 C20 -43 4 -41 4 -30 C4 -22 14 -20 17 -27" fill="none" stroke="url(#gold)" stroke-width="2.1" stroke-linecap="round" />
+          <path d="M0 0 C-13 -8 -19 -20 -15 -31 C-10 -42 3 -38 2 -28" fill="none" stroke="url(#gold)" stroke-width="1.7" stroke-linecap="round" />
+          <circle cx="0" cy="0" r="2.7" fill="url(#goldFill)" stroke="#a66d1c" stroke-width=".7" />
+        </g>
+        <g id="corner">
+          <path d="M0 0 C25 2 37 16 44 35 C52 55 42 75 25 78 C10 80 4 67 12 58 C18 52 27 57 25 64 M44 35 C63 25 77 13 92 7 C110 0 123 6 126 18 C129 29 116 36 109 27 C104 20 112 15 117 20 M25 78 C23 96 12 111 4 128 C-5 147 3 165 18 170 M4 128 C-14 126 -25 115 -24 101 C-23 89 -11 89 -8 99" fill="none" stroke="url(#gold)" stroke-width="2.5" stroke-linecap="round" />
+          <use href="#sprig" transform="translate(44 35) rotate(12) scale(.9)" />
+          <use href="#sprig" transform="translate(92 7) rotate(63) scale(.68)" />
+          <use href="#sprig" transform="translate(4 128) rotate(185) scale(.78)" />
+          <use href="#leaf" transform="translate(14 14) rotate(35) scale(.85)" />
+          <use href="#leaf" transform="translate(30 53) rotate(205) scale(.8)" />
+          <use href="#leaf" transform="translate(62 25) rotate(12) scale(.8)" />
+          <use href="#leaf" transform="translate(79 15) rotate(188) scale(.7)" />
+          <use href="#leaf" transform="translate(4 91) rotate(198) scale(.75)" />
+          <use href="#leaf" transform="translate(-4 144) rotate(28) scale(.72)" />
+          <use href="#curl" transform="translate(0 0) rotate(-20) scale(.85)" />
+          <circle cx="26" cy="12" r="2.2" fill="url(#goldFill)" />
+          <circle cx="73" cy="6" r="2" fill="url(#goldFill)" />
+          <circle cx="-14" cy="78" r="2.2" fill="url(#goldFill)" />
+        </g>
+        <g id="diamond">
+          <path d="M0 -15 L7 0 L0 15 L-7 0Z" fill="url(#goldFill)" stroke="#a66d1c" stroke-width="1" />
+          <path d="M0 -9 L3 0 L0 9 L-3 0Z" fill="#fff0bb" opacity=".85" />
+          <path d="M-24 0 L-8 -4 L-4 0 L-8 4Z M24 0 L8 -4 L4 0 L8 4Z" fill="url(#goldFill)" stroke="#a66d1c" stroke-width=".8" />
+          <circle cx="0" cy="0" r="2.4" fill="#fff4ce" />
+        </g>
+        <g id="topBottomFlourish">
+          <path d="M0 0 H150 M174 0 H324" stroke="url(#gold)" stroke-width="1.7" />
+          <path d="M0 5 H137 M187 5 H324" stroke="url(#gold)" stroke-width=".8" opacity=".9" />
+          <use href="#diamond" transform="translate(162 2.5) scale(.72)" />
+          <circle cx="8" cy="0" r="2" fill="#c28c2e" />
+          <circle cx="316" cy="0" r="2" fill="#c28c2e" />
+        </g>
+        <symbol id="gold-scrollwork-frame" viewBox="0 0 680 1020" preserveAspectRatio="none">
+          <rect x="27" y="27" width="626" height="966" rx="1" fill="none" stroke="url(#gold)" stroke-width="1.8" />
+          <rect x="35" y="35" width="610" height="950" rx="1" fill="none" stroke="url(#gold)" stroke-width=".75" />
+          <svg x="18" y="28" width="132" height="150" viewBox="-24 -4 153 178" preserveAspectRatio="xMinYMin meet">
+            <use href="#corner" />
+          </svg>
+          <svg x="530" y="28" width="132" height="150" viewBox="-24 -4 153 178" preserveAspectRatio="xMaxYMin meet">
+            <g transform="translate(105 0) scale(-1 1)"><use href="#corner" /></g>
+          </svg>
+          <svg x="18" y="842" width="132" height="150" viewBox="-24 -4 153 178" preserveAspectRatio="xMinYMax meet">
+            <g transform="translate(0 170) scale(1 -1)"><use href="#corner" /></g>
+          </svg>
+          <svg x="530" y="842" width="132" height="150" viewBox="-24 -4 153 178" preserveAspectRatio="xMaxYMax meet">
+            <g transform="translate(105 170) scale(-1 -1)"><use href="#corner" /></g>
+          </svg>
+          <svg x="178" y="15" width="324" height="24" viewBox="0 -10 324 24" preserveAspectRatio="xMidYMid meet">
+            <use href="#topBottomFlourish" />
+          </svg>
+          <svg x="178" y="981" width="324" height="24" viewBox="0 -10 324 24" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(324 5) scale(-1 -1)"><use href="#topBottomFlourish" /></g>
+          </svg>
+          <path d="M42 226 V465 M42 555 V794 M638 226 V465 M638 555 V794 M48 226 V465 M48 555 V794 M632 226 V465 M632 555 V794" fill="none" stroke="url(#gold)" stroke-width="1.2" />
+          <svg x="20" y="494" width="50" height="32" viewBox="-24 -15 48 30" preserveAspectRatio="xMidYMid meet"><use href="#diamond" /></svg>
+          <svg x="610" y="494" width="50" height="32" viewBox="-24 -15 48 30" preserveAspectRatio="xMidYMid meet"><use href="#diamond" /></svg>
+        </symbol>
+      </defs>
+    </svg>
     <section class="scene scene-cover active" id="cover-scene" aria-label="Invitation cover">
       <article class="invitation-card" aria-label="Dawat-e-Walima invitation cover">
-        <div class="inner-border" aria-hidden="true"></div>
-
-        <svg class="floral-corner corner-tl" viewBox="0 0 150 150" aria-hidden="true">
-          <use href="#floral-artwork"></use>
-        </svg>
-        <svg class="floral-corner corner-tr" viewBox="0 0 150 150" aria-hidden="true">
-          <use href="#floral-artwork"></use>
-        </svg>
-        <svg class="floral-corner corner-bl" viewBox="0 0 150 150" aria-hidden="true">
-          <use href="#floral-artwork"></use>
-        </svg>
-        <svg class="floral-corner corner-br" viewBox="0 0 150 150" aria-hidden="true">
-          <use href="#floral-artwork"></use>
-        </svg>
-
-        <svg class="svg-library" aria-hidden="true">
-          <symbol id="floral-artwork" viewBox="0 0 150 150">
-            <g fill="currentColor">
-              <path class="leaf leaf-1" d="M2 2H112C81 13 65 34 58 61C42 33 23 13 2 2Z"/>
-              <path class="leaf leaf-2" d="M3 3C28 22 46 46 51 75C25 55 10 30 3 3Z"/>
-              <path class="leaf leaf-3" d="M14 9C27 33 43 48 62 55C55 33 38 17 14 9Z"/>
-              <path class="leaf leaf-4" d="M85 5C75 30 78 53 93 70C105 47 105 25 85 5Z"/>
-              <path class="leaf leaf-5" d="M101 11C115 29 128 37 145 38C137 21 122 12 101 11Z"/>
-              <path class="leaf leaf-6" d="M7 79C16 52 37 37 64 35C55 61 35 77 7 79Z"/>
-              <path class="leaf leaf-7" d="M9 84C35 80 54 67 67 46C68 72 43 91 9 84Z"/>
-              <path class="leaf leaf-8" d="M20 104C6 85 9 66 22 52C35 72 34 90 20 104Z"/>
-              <path class="leaf leaf-9" d="M34 111C27 87 36 66 56 52C62 77 54 98 34 111Z"/>
-              <path class="leaf leaf-10" d="M47 119C55 96 74 83 98 82C87 105 68 118 47 119Z"/>
-              <path class="leaf leaf-11" d="M6 125C24 111 43 108 62 116C44 131 25 135 6 125Z"/>
-              <path class="leaf leaf-12" d="M6 139C26 131 46 135 61 149H6Z"/>
-              <path class="leaf leaf-13" d="M68 147C66 125 76 106 96 94C98 118 88 136 68 147Z"/>
-            </g>
-            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M3 3C39 17 59 43 62 75C65 104 45 129 9 147"/>
-              <path d="M17 9C37 28 47 48 44 68"/>
-              <path d="M8 56C28 53 43 41 54 24"/>
-            </g>
-            <g fill="currentColor">
-              <circle cx="12" cy="63" r="3"/>
-              <circle cx="22" cy="70" r="2"/>
-              <circle cx="10" cy="80" r="2"/>
-              <circle cx="31" cy="57" r="2"/>
-              <circle cx="60" cy="17" r="3"/>
-              <circle cx="70" cy="24" r="2"/>
-              <circle cx="76" cy="17" r="2"/>
-            </g>
-          </symbol>
+        <svg class="gold-scrollwork-border" viewBox="0 0 680 1020" preserveAspectRatio="none" aria-hidden="true">
+          <use href="#gold-scrollwork-frame" />
         </svg>
 
         <header class="card-header">
@@ -109,25 +152,34 @@
         <section class="monogram-section" aria-label="Matin and Gulfisha monogram">
           <div class="monogram">
             <svg class="wreath" viewBox="0 0 200 200" aria-hidden="true">
-              <path class="wreath-arc wreath-arc-left" d="M99 18C57 18 24 52 22 91C20 128 43 161 79 176"/>
-              <path class="wreath-arc wreath-arc-right" d="M105 18C143 23 171 52 178 88C183 119 165 150 136 169"/>
+              <path class="wreath-arc wreath-arc-left" d="M99 22C61 18 29 45 24 83C19 122 39 155 77 173"/>
+              <path class="wreath-arc wreath-arc-right" d="M101 22C139 18 171 45 176 83C181 119 161 151 123 173"/>
 
               <g class="wreath-leaves">
-                <path d="M55 29Q35 27 33 9Q51 12 55 29Z"/>
-                <path d="M39 44Q20 41 18 24Q36 27 39 44Z"/>
-                <path d="M28 64Q12 56 16 40Q31 49 28 64Z"/>
-                <path d="M23 85Q8 76 16 60Q29 72 23 85Z"/>
-                <path d="M25 108Q13 95 25 80Q34 94 25 108Z"/>
-                <path d="M34 131Q25 115 40 104Q45 120 34 131Z"/>
-                <path d="M51 151Q47 134 64 127Q65 144 51 151Z"/>
-                <path d="M73 166Q74 148 91 147Q87 164 73 166Z"/>
+                <path d="M55 29Q35 27 33 9Q51 12 55 29Z" />
+                <path d="M39 44Q20 41 18 24Q36 27 39 44Z" />
+                <path d="M28 64Q12 56 16 40Q31 49 28 64Z" />
+                <path d="M23 85Q8 76 16 60Q29 72 23 85Z" />
+                <path d="M25 108Q13 95 25 80Q34 94 25 108Z" />
+                <path d="M34 131Q25 115 40 104Q45 120 34 131Z" />
+                <path d="M51 151Q47 134 64 127Q65 144 51 151Z" />
+                <path d="M73 166Q74 148 91 147Q87 164 73 166Z" />
 
-                <path d="M122 29Q141 20 151 35Q134 46 122 29Z"/>
-                <path d="M147 47Q165 43 171 59Q154 65 147 47Z"/>
-                <path d="M164 69Q180 70 181 87Q164 86 164 69Z"/>
-                <path d="M173 94Q187 102 180 117Q166 108 173 94Z"/>
-                <path d="M163 122Q177 133 165 147Q153 135 163 122Z"/>
-                <path d="M144 145Q153 160 138 171Q131 154 144 145Z"/>
+                <path d="M122 29Q141 20 151 35Q134 46 122 29Z" />
+                <path d="M147 47Q165 43 171 59Q154 65 147 47Z" />
+                <path d="M164 69Q180 70 181 87Q164 86 164 69Z" />
+                <path d="M173 94Q187 102 180 117Q166 108 173 94Z" />
+                <path d="M163 122Q177 133 165 147Q153 135 163 122Z" />
+                <path d="M144 145Q153 160 138 171Q131 154 144 145Z" />
+              </g>
+
+              <g class="wreath-accents">
+                <use href="#curl" transform="translate(99 22) rotate(-88) scale(.42)" />
+                <use href="#curl" transform="translate(101 22) rotate(-92) scale(-.42 .42)" />
+                <use href="#diamond" transform="translate(100 18) scale(.3)" />
+                <use href="#diamond" transform="translate(100 181) scale(.24)" />
+                <circle cx="27" cy="91" r="2.2" />
+                <circle cx="173" cy="91" r="2.2" />
               </g>
             </svg>
 
@@ -157,18 +209,8 @@
 
     <section class="scene scene-walima" id="walima-scene" aria-label="Walima invitation">
       <article class="invitation-card walima-card">
-        <div class="inner-border" aria-hidden="true"></div>
-        <svg class="floral-corner corner-tl" viewBox="0 0 150 150" aria-hidden="true">
-          <use href="#floral-artwork"></use>
-        </svg>
-        <svg class="floral-corner corner-tr" viewBox="0 0 150 150" aria-hidden="true">
-          <use href="#floral-artwork"></use>
-        </svg>
-        <svg class="floral-corner corner-bl" viewBox="0 0 150 150" aria-hidden="true">
-          <use href="#floral-artwork"></use>
-        </svg>
-        <svg class="floral-corner corner-br" viewBox="0 0 150 150" aria-hidden="true">
-          <use href="#floral-artwork"></use>
+        <svg class="gold-scrollwork-border" viewBox="0 0 680 1020" preserveAspectRatio="none" aria-hidden="true">
+          <use href="#gold-scrollwork-frame" />
         </svg>
 
         <header class="card-header walima-header">
