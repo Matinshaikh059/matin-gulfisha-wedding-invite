@@ -1,0 +1,843 @@
+
+:root {
+  --paper: #fffdf8;
+  --ink: #171411;
+  --burgundy: #702a3c;
+  --gold: #b79b63;
+  --muted: #756c61;
+  --border: #92897d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #eee8de;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+button {
+  font: inherit;
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 18px 12px 35px;
+}
+
+.scene {
+  display: none;
+  width: 100%;
+}
+
+.scene.active {
+  display: block;
+  animation: scene-appear 700ms ease both;
+}
+
+.invitation-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: min(100%, 760px);
+  min-height: 920px;
+  margin: 0 auto;
+  padding: 36px clamp(20px, 5vw, 54px) 28px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  text-align: center;
+  box-shadow: 0 14px 45px #34261c20;
+}
+
+.inner-border {
+  position: absolute;
+  z-index: -1;
+  inset: 6px;
+  border: 1px solid #c8bda9;
+  pointer-events: none;
+}
+
+.svg-library {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.floral-corner {
+  position: absolute;
+  z-index: -1;
+  width: clamp(76px, 15vw, 126px);
+  height: auto;
+  color: #111;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.corner-tl { top: 5px; left: 5px; }
+.corner-tr { top: 5px; right: 5px; transform: scaleX(-1); }
+.corner-bl { bottom: 5px; left: 5px; transform: scaleY(-1); }
+.corner-br { bottom: 5px; right: 5px; transform: scale(-1); }
+
+.floral-corner .leaf,
+.floral-corner .stem,
+.floral-corner .leaf-1,
+.floral-corner .leaf-2,
+.floral-corner .leaf-3,
+.floral-corner .leaf-4,
+.floral-corner .leaf-5,
+.floral-corner .leaf-6,
+.floral-corner .leaf-7,
+.floral-corner .leaf-8,
+.floral-corner .leaf-9,
+.floral-corner .leaf-10,
+.floral-corner .leaf-11,
+.floral-corner .leaf-12,
+.floral-corner .leaf-13 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: leaf-sway 5.5s ease-in-out infinite alternate;
+}
+
+.floral-corner .leaf-1 { animation-delay: 0.1s; }
+.floral-corner .leaf-2 { animation-delay: 0.2s; }
+.floral-corner .leaf-3 { animation-delay: 0.35s; }
+.floral-corner .leaf-4 { animation-delay: 0.4s; }
+.floral-corner .leaf-5 { animation-delay: 0.5s; }
+.floral-corner .leaf-6 { animation-delay: 0.7s; }
+.floral-corner .leaf-7 { animation-delay: 0.9s; }
+.floral-corner .leaf-8 { animation-delay: 1.1s; }
+.floral-corner .leaf-9 { animation-delay: 0.3s; }
+.floral-corner .leaf-10 { animation-delay: 0.6s; }
+.floral-corner .leaf-11 { animation-delay: 0.8s; }
+.floral-corner .leaf-12 { animation-delay: 1.2s; }
+.floral-corner .leaf-13 { animation-delay: 1.4s; }
+
+.card-header {
+  position: relative;
+  z-index: 1;
+}
+
+.top-arabic {
+  margin: 0 0 8px;
+  font-family: "Amiri", serif;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  line-height: 1.5;
+}
+
+.eyebrow-text {
+  margin: 0;
+  color: var(--burgundy);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.event-title-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.event-title,
+.scene-heading {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.event-title {
+  padding: 8px 20px 13px;
+  font-size: clamp(2.3rem, 6vw, 3.7rem);
+}
+
+.scene-heading {
+  font-size: clamp(2.1rem, 5.5vw, 3.2rem);
+}
+
+.scene-heading-large {
+  font-size: clamp(2.8rem, 8vw, 4.8rem);
+}
+
+.event-title::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 3px 0 7px 7px;
+  border: 1px solid var(--ink);
+  border-left-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-7deg);
+}
+
+.event-title > span:first-child {
+  position: relative;
+}
+
+.title-flourish {
+  position: absolute;
+  top: -7px;
+  left: 20%;
+  color: var(--burgundy);
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  animation: flourish-float 3s ease-in-out infinite;
+}
+
+.ornamental-divider {
+  position: relative;
+  width: min(70%, 300px);
+  height: 1px;
+  margin: 13px auto 22px;
+  background: linear-gradient(90deg, transparent, var(--ink), transparent);
+}
+
+.ornamental-divider span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0 10px;
+  color: var(--burgundy);
+  background: var(--paper);
+  font-size: 0.8rem;
+  transform: translate(-50%, -50%);
+}
+
+.dua-section {
+  position: relative;
+  z-index: 1;
+  max-width: 590px;
+  margin: 0 auto;
+}
+
+.dua-calligraphy {
+  position: relative;
+  margin: 0 auto 12px;
+  color: var(--burgundy);
+  font-family: "Amiri", serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: 0.18em;
+  opacity: 0.95;
+  text-shadow: 0 0 0 rgba(112, 42, 60, 0.18);
+}
+
+.dua-calligraphy::before,
+.dua-calligraphy::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: clamp(52px, 13vw, 96px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--burgundy), transparent);
+  transform: translateY(-50%);
+}
+
+.dua-calligraphy::before {
+  right: calc(100% + 16px);
+}
+
+.dua-calligraphy::after {
+  left: calc(100% + 16px);
+}
+
+.dua-calligraphy-bottom {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.dua-arabic {
+  margin: 0 0 6px;
+  font-family: "Noto Nastaliq Urdu", "Amiri", serif;
+  font-size: clamp(1.2rem, 3.1vw, 1.9rem);
+  line-height: 1.7;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.dua-translation {
+  margin: 2px 0;
+  font-size: clamp(1.05rem, 2.7vw, 1.42rem);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.dua-reference {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  font-style: italic;
+}
+
+.dua-reminder {
+  position: relative;
+  z-index: 1;
+  margin: clamp(45px, 7vh, 68px) auto 0;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-style: italic;
+}
+
+.monogram-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin: 8px auto 0;
+}
+
+.monogram {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 232px;
+  height: 232px;
+  margin: 0 auto;
+  transform: translateY(-2px);
+}
+
+.monogram::before,
+.monogram::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+
+.monogram::after {
+  inset: 34px;
+  border-color: rgba(23, 20, 17, 0.35);
+}
+
+.wreath {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: translateY(5px);
+}
+
+.wreath-arc {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: draw-wreath 2.1s ease forwards;
+}
+
+.wreath-arc-right { animation-delay: 250ms; }
+
+.wreath-leaves {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.15;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  animation: leaves-appear 900ms ease 600ms both;
+}
+
+.initials {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  z-index: 2;
+}
+
+.initial {
+  position: absolute;
+  opacity: 0;
+  filter: blur(5px);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 5.5rem;
+  font-weight: 500;
+  line-height: 1;
+  animation: reveal-initial 900ms cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
+}
+
+.initial-m {
+  top: 18px;
+  left: 8px;
+  animation-delay: 700ms;
+}
+
+.initial-g {
+  right: 10px;
+  bottom: 12px;
+  animation-delay: 1100ms;
+}
+
+.initial-ampersand {
+  position: absolute;
+  top: 56px;
+  left: 51px;
+  z-index: 2;
+  color: var(--burgundy);
+  font-family: "Great Vibes", cursive;
+  font-size: 4.2rem;
+  opacity: 0;
+  animation: reveal-ampersand 800ms ease 1400ms forwards;
+}
+
+.ring-label {
+  position: absolute;
+  z-index: 2;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  opacity: 0;
+  animation: fade-in 700ms ease 1600ms forwards;
+}
+
+.ring-label-top {
+  top: 35px;
+  left: 50%;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.ring-label-date {
+  right: 30px;
+  bottom: 38px;
+  letter-spacing: 0.06em;
+  transform: rotate(-12deg);
+}
+
+.sender-details {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 560px);
+  margin: 8px auto 0;
+  padding: 0 18px 0 0;
+  text-align: left;
+  font-size: clamp(0.96rem, 2.2vw, 1.12rem);
+  font-style: italic;
+  line-height: 1.22;
+}
+
+.sender-details p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.sender-details .sender-label {
+  margin-bottom: 2px;
+}
+
+.sender-details strong {
+  font-weight: 700;
+}
+
+.walima-card {
+  min-height: auto;
+  padding-top: 28px;
+}
+
+.walima-header {
+  margin-bottom: 10px;
+}
+
+.walima-arabic {
+  margin-bottom: 12px;
+}
+
+.walima-script {
+  margin: 8px 0 10px;
+  font-family: "Great Vibes", cursive;
+  color: var(--burgundy);
+  font-size: clamp(2.4rem, 6vw, 3.7rem);
+  line-height: 1;
+}
+
+.walima-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+}
+
+.walima-tabs {
+  display: inline-flex;
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid var(--gold);
+  background: rgba(183, 155, 99, 0.08);
+  margin: 4px auto 18px;
+}
+
+.tab-button {
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.tab-button.active {
+  background: var(--burgundy);
+  color: #fff;
+}
+
+.walima-panel {
+  max-width: 610px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.walima-intro {
+  margin-bottom: 18px;
+}
+
+.walima-blessing {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.walima-subtitle {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.walima-couple {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 16px 0;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  color: var(--burgundy);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.walima-and {
+  color: var(--gold);
+  font-family: "Great Vibes", cursive;
+  font-size: 2.4rem;
+  line-height: 0.8;
+}
+
+.walima-note {
+  max-width: 540px;
+  margin: 0 auto 18px;
+  font-size: 1.12rem;
+  line-height: 1.6;
+}
+
+.walima-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px auto 18px;
+  padding: 18px 12px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  text-align: center;
+}
+
+.walima-details > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.detail-wide {
+  grid-column: 1 / -1;
+}
+
+.detail-label {
+  color: var(--burgundy);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.walima-details strong {
+  font-size: 1.2rem;
+}
+
+.walima-footer {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.urdu-panel .walima-couple {
+  font-family: "Amiri", serif;
+  font-size: clamp(2rem, 4.4vw, 2.9rem);
+}
+
+.urdu-panel .walima-subtitle {
+  font-size: 1.2rem;
+}
+
+.urdu-panel .walima-note {
+  font-size: 1.26rem;
+}
+
+.urdu-panel .walima-footer {
+  font-size: 1.08rem;
+}
+
+.arabic {
+  font-family: "Amiri", serif;
+  direction: rtl;
+}
+
+.urdu-intro {
+  margin-bottom: 12px;
+}
+
+.walima-details-urdu {
+  text-align: right;
+  font-size: 1.12rem;
+}
+
+.walima-details-urdu .detail-label {
+  font-size: 0.78rem;
+}
+
+.button-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.continue-button {
+  padding: 12px 22px;
+  border: 1px solid var(--burgundy);
+  background: var(--burgundy);
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--burgundy);
+}
+
+.continue-button:hover {
+  background: #4e1c2a;
+  transform: translateY(-2px);
+}
+
+.secondary-button:hover {
+  background: rgba(112, 42, 60, 0.08);
+}
+
+.continue-button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@keyframes card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes draw-wreath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes leaves-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes reveal-initial {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-ampersand {
+  from {
+    opacity: 0;
+    transform: rotate(-15deg) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+@keyframes flourish-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(8deg);
+  }
+}
+
+@keyframes leaf-sway {
+  0% { transform: rotate(-1deg) translateY(0px); }
+  50% { transform: rotate(2deg) translateY(-1px); }
+  100% { transform: rotate(-1deg) translateY(1px); }
+}
+
+@keyframes scene-appear {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .page-shell {
+    padding: 8px 7px 20px;
+  }
+
+  .invitation-card {
+    min-height: auto;
+    padding: 28px 16px 24px;
+  }
+
+  .floral-corner {
+    width: 72px;
+  }
+
+  .event-title {
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: clamp(2.5rem, 9vw, 3.5rem);
+  }
+
+  .dua-reminder {
+    margin-top: 32px;
+  }
+
+  .monogram {
+    width: 190px;
+    height: 190px;
+    transform: scale(0.82) translateY(-4px);
+    margin: -10px auto 8px;
+  }
+
+  .initials {
+    transform: scale(0.88);
+  }
+
+  .sender-details {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 8px 0 6px;
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .continue-area {
+    margin-top: 20px;
+    padding-bottom: 4px;
+  }
+
+  .continue-area .continue-button,
+  .button-row .continue-button {
+    width: min(100%, 210px);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 12px;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .urdu-panel .walima-couple {
+    font-size: clamp(1.6rem, 5vw, 2.1rem);
+  }
+
+  .urdu-panel .walima-subtitle,
+  .urdu-panel .walima-note,
+  .urdu-panel .walima-footer,
+  .walima-details-urdu {
+    font-size: 0.98rem;
+  }
+
+  .button-row {
+    margin-top: 20px;
+  }
+
+  .event-preview-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-height: 850px) and (min-width: 521px) {
+  .dua-reminder {
+    margin-top: 42px;
+  }
+
+  .sender-details {
+    margin-top: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
