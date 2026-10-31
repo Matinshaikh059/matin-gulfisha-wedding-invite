@@ -551,6 +551,36 @@ button {
   text-transform: uppercase;
 }
 
+.map-button {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--gold);
+  color: var(--burgundy);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.map-button:hover {
+  background: rgba(112, 42, 60, 0.08);
+  transform: translateY(-1px);
+}
+
+.map-button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.urdu-panel .map-button {
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .walima-details strong {
   font-size: 1.2rem;
 }
